@@ -68,10 +68,6 @@ export function BatButton() {
             setPass((prevPass) => ({ ...prevPass, pass: password }));
             setShowPass(true);
 
-            setTimeout(() => {
-                setPass((prevPass) => ({ ...prevPass, pass: "" }));
-            }, 5000);
-
         }
 
     }

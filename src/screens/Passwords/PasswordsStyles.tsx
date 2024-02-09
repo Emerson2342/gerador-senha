@@ -48,5 +48,15 @@ export const styles = StyleSheet.create({
         textAlign: "center",
         fontWeight: "bold",
         color: "#fff"
+    },
+    textoVazio: {
+        top: 150,
+        fontSize: 25,
+        color: "#fff",
+        fontWeight: "bold",
+        backgroundColor: "#000",
+        padding: 10,
+        borderRadius: 5
+
     }
 });

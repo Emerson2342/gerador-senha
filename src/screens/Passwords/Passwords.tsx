@@ -82,7 +82,6 @@ export function Passwords() {
                 />
             </View>
             <View
-
                 style={styles.content}>
                 <TouchableOpacity
                     onPress={() => handleCopySenha(item)}
@@ -90,9 +89,7 @@ export function Passwords() {
                     {isPasswordVisible(index) ? <Text style={styles.textList}>{item.senha}</Text>
                         : <Text style={styles.textList}>********************</Text>}
                 </TouchableOpacity>
-
             </View>
-
         </View >
 
     );
@@ -107,14 +104,21 @@ export function Passwords() {
 
             <Text style={styles.textHeader}>Senhas Salvas</Text>
 
-            <View style={styles.listContainer}>
-                <FlatList
-                    data={senhas}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.senha.toString()}
-                    numColumns={column}
-                />
-            </View>
+
+            {senhas.length > 0 ? (
+                <View style={styles.listContainer}>
+                    <FlatList
+                        data={senhas}
+                        renderItem={renderItem}
+                        keyExtractor={(item) => item.senha.toString()}
+                        numColumns={column}
+                    />
+                </View>
+            ) : (
+                <Text style={styles.textoVazio}>Nenhuma senha salva</Text>
+            )}
+
+
         </View>
     );
 } 
