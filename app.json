@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "Gerador de Senha",
+    "slug": "bat-pass",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/iconAndroid.png",
+    "userInterfaceStyle": "light",
+    "displayName": "Gerador de Senha",
+    "splash": {
+      "image": "./assets/batSplash.jpg",
+      "resizeMode": "contain",
+      "backgroundColor": "#33333333"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/iconAndroid.png",
+        "backgroundColor": "rgba(255, 255, 0, 0.0)"
+      },
+      "package": "com.missinhoo.batpass"
+    },
+    "web": {
+      "favicon": "./assets/batIcone.jpg"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7fab19b0-b052-485f-aed3-e58a33efd864"
+      }
+    }
+  }
+}
