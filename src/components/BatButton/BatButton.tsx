@@ -65,7 +65,7 @@ export function BatButton() {
                     Math.floor(Math.random() * passChar.length)
                 );
 
-            setPass((prevPass) => ({ ...prevPass, pass: password }));
+            setPass((prevPass) => ({ ...prevPass, password: password }));
             setShowPass(true);
 
         }
@@ -74,12 +74,12 @@ export function BatButton() {
 
     function handleTypeButton() {
         setModalAddTypeVisible(true)
-        setPass((prevPass) => ({ ...prevPass, pass: '' }));
+        setPass((prevPass) => ({ ...prevPass, password: '' }));
     }
 
 
     function handleSavePass() {
-        pass.pass !== '' ? setModalAddVisible(true) : setModalEmptyVisible(true);
+        pass.password !== '' ? setModalAddVisible(true) : setModalEmptyVisible(true);
 
     }
 
@@ -88,7 +88,7 @@ export function BatButton() {
             <View>
                 {showPass && <Text
                     style={[styles.text, { top: -120, alignSelf: "center", position: "absolute" }]}
-                >{pass.pass}</Text>}
+                >{pass.password}</Text>}
 
                 <View style={styles.optionsContainer}>
                     <View style={styles.optionsContent}>

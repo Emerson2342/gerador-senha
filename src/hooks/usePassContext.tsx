@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, Dispatch, SetStateAction } from "react";
 
 interface Pass {
-    pass: string;
+    password: string;
 }
 export default Pass;
 
@@ -25,7 +25,7 @@ export const usePassContext = () => {
 };
 
 export const PassProvider: React.FC<PassProviderProps> = ({ children }) => {
-    const [pass, setPass] = useState<Pass>({ pass: '' });
+    const [pass, setPass] = useState<Pass>({ password: '' });
 
     return (
         <PassContext.Provider value={{ pass, setPass }}>

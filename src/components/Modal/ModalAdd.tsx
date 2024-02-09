@@ -48,12 +48,12 @@ export function ModalAdd({ handleClose }: ModalAddProps) {
             else {
                 const novaSenha: Senha = {
                     conta: nomeConta,
-                    senha: pass.pass,
+                    senha: pass.password,
                 };
 
                 setSenhas([...senhas, novaSenha]);
                 setNomeConta('');
-                setPass({ pass: '' });
+                setPass({ password: '' });
                 handleClose();
 
             }
@@ -71,7 +71,7 @@ export function ModalAdd({ handleClose }: ModalAddProps) {
                 backgroundColor={"rgba(24,24,24,0.8)"}
             />
             <View style={styles.content}>
-                <Text style={styles.senha}>{pass.pass}</Text>
+                <Text style={styles.senha}>{pass.password}</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Digite a conta da Senha"
@@ -98,7 +98,7 @@ export function ModalAdd({ handleClose }: ModalAddProps) {
                         style={styles.button}
                         onPress={() => {
                             handleClose();
-                            setPass({ pass: '' });
+                            setPass({ password: '' });
                         }}
 
                     ><Text style={styles.textClose}>Voltar</Text></TouchableOpacity>

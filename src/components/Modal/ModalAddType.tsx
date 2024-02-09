@@ -56,7 +56,7 @@ export function ModalAddType({ handleClose }: ModalAddProps) {
                 setSenhas([...senhas, novaSenha]);
                 setNomeConta('');
                 setNomeConta('');
-                setPass({ pass: '' });
+                setPass({ password: '' });
                 handleClose();
 
             }
@@ -105,7 +105,7 @@ export function ModalAddType({ handleClose }: ModalAddProps) {
                         style={styles.button}
                         onPress={() => {
                             handleClose();
-                            setPass({ pass: '' });
+                            setPass({ password: '' });
                         }}
 
                     ><Text style={styles.textClose}>Voltar</Text></TouchableOpacity>
