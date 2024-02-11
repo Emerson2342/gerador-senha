@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Alert, VirtualizedList } from 'react-native';
 import { useSenhasContext } from '../../hooks/useSenhasContext';
 import { StatusBar } from 'expo-status-bar';
 import * as Clipboard from 'expo-clipboard';
-import { Feather, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
+import { Feather, FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { styles } from './PasswordsStyles';
 
@@ -31,7 +31,7 @@ export function Passwords() {
         Clipboard.setStringAsync(senhaParaCopiar.senha);
         Alert.alert(
             '',
-            'Senha Copiada para área de transferência',
+            'Senha copiada para área de transferência',
             [{ text: 'Fechar', }
             ],
         );
@@ -45,10 +45,10 @@ export function Passwords() {
         return showPass === index;
     };
 
-    const handleShowOptionsAlert = (senhaParaRemover: Senha) => {
+    const handleShowOptionsAlert = (senhaParaRemover: Senha, item: Senha) => {
         Alert.alert(
             'Atenção',
-            'Deseja realmente excluir a senha?',
+            `Deseja excluir a senha ${item.conta} ?`,
             [
                 {
                     text: 'Excluir Senha',
@@ -63,32 +63,46 @@ export function Passwords() {
         );
     };
 
-
     const renderItem = ({ item, index }: { item: Senha, index: number }) => (
-        <View style={styles.lista}
-        >
-            <TouchableOpacity
-                style={[styles.content, { width: "40%" }]}
-                onLongPress={() => handleShowOptionsAlert(item)}>
-                <Text style={styles.textList}>{item.conta}</Text>
-            </TouchableOpacity>
-            <View
-                onTouchStart={() => hidden(index)}
-                style={styles.icon}>
-                <FontAwesome
-                    size={20}
-                    color={"#e5bf3c"}
-                    name={isPasswordVisible(index) ? 'unlock-alt' : 'lock'}
-                />
+        <View style={styles.lista}>
+            <View >
+                <Text style={styles.textList}>Conta: {item.conta}</Text>
             </View>
-            <View
-                style={styles.content}>
-                <TouchableOpacity
-                    onPress={() => handleCopySenha(item)}
-                >
-                    {isPasswordVisible(index) ? <Text style={styles.textList}>{item.senha}</Text>
-                        : <Text style={styles.textList}>********************</Text>}
-                </TouchableOpacity>
+            <View style={styles.senhaContainer}>
+                <View style={{ width: '65%' }}>
+                    {isPasswordVisible(index) ? <Text style={styles.textList}>Senha: {item.senha}</Text>
+                        : <Text style={styles.textList}>Senha: ***************</Text>}
+                </View>
+                <View style={styles.iconContainer}>
+                    <TouchableOpacity
+                        onPress={() => hidden(index)}
+                    >
+                        <FontAwesome
+                            size={30}
+                            color={isPasswordVisible(index) ? "#e5bf3c" : "#333"}
+                            name={isPasswordVisible(index) ? 'unlock-alt' : 'lock'}
+                        />
+
+                    </TouchableOpacity>
+                    <View
+                        onTouchStart={() => handleCopySenha(item)}
+                    >
+                        <Ionicons
+                            size={30}
+                            color={"#333333"}
+                            name="copy"
+                        />
+                    </View>
+                    <View
+                        onTouchStart={() => handleShowOptionsAlert(item, item)}
+                    >
+                        <FontAwesome
+                            size={30}
+                            color={"#333"}
+                            name="close"
+                        />
+                    </View>
+                </View>
             </View>
         </View >
 
@@ -101,10 +115,7 @@ export function Passwords() {
                 style='light'
                 translucent={true}
             />
-
             <Text style={styles.textHeader}>Senhas Salvas</Text>
-
-
             {senhas.length > 0 ? (
                 <View style={styles.listContainer}>
                     <FlatList
@@ -117,8 +128,6 @@ export function Passwords() {
             ) : (
                 <Text style={styles.textoVazio}>Nenhuma senha salva</Text>
             )}
-
-
         </View>
     );
 } 

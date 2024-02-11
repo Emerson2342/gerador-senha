@@ -19,7 +19,7 @@ export function ModalEmptyChar({ handleClose }: ModalAddProps) {
             />
             <View style={styles.content}>
 
-                <Text style={styles.text}>Favor, selecionar um caractere!</Text>
+                <Text style={styles.text}>Favor, selecionar um tipo de caractere!</Text>
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => handleClose()}

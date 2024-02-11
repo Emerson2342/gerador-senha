@@ -2,17 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-        paddingTop: 90,
+        paddingTop: 30,
         backgroundColor: "#333333",
         flex: 1,
         padding: 15,
         alignContent: "center",
         alignItems: "center",
-    },
-    content: {
-        width: "60%",
-        alignItems: "center",
-
     },
     textHeader: {
         fontSize: 40,
@@ -21,21 +16,19 @@ export const styles = StyleSheet.create({
         color: "#e5bf3c",
         fontWeight: "bold"
     },
-    icon: {
-        justifyContent: "center"
-
+    iconContainer: {
+        width: '35%',
+        flexDirection: 'row',
+        justifyContent: "space-between",
     },
     lista: {
-        flexDirection: "row",
         backgroundColor: "#000",
         borderRadius: 5,
-        padding: 2,
-        marginVertical: 5,
-
-
+        marginVertical: 3,
+        padding: 5
     },
     listContainer: {
-        top: 20,
+        width: '100%',
         height: 500
     },
     titleContainer: {
@@ -43,20 +36,22 @@ export const styles = StyleSheet.create({
     },
     textList: {
         fontSize: 17,
-        marginVertical: 15,
         width: "100%",
-        textAlign: "center",
+        textAlign: "left",
         fontWeight: "bold",
-        color: "#fff"
+        color: "#fff",
+        padding: 3
+    },
+    senhaContainer: {
+        flexDirection: 'row',
+        justifyContent: "space-between"
     },
     textoVazio: {
         top: 150,
         fontSize: 25,
         color: "#fff",
         fontWeight: "bold",
-        backgroundColor: "#000",
         padding: 10,
         borderRadius: 5
-
     }
 });

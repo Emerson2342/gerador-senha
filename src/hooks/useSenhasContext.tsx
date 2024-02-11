@@ -29,18 +29,7 @@ export const useSenhasContext = () => {
 
 export const SenhasProvider: React.FC<SenhasProviderProps> = ({ children }) => {
     const [senhas, setSenhas] = useState<Senha[]>([
-        {
-            conta: "Instagram",
-            senha: '125135132ffff133',
-        },
-        {
-            conta: "Facebook",
-            senha: '1251sdfsdfds132133',
-        },
-        {
-            conta: "Twitter",
-            senha: '1251351325132133',
-        },
+
     ]);
 
     // Carregar os dados do AsyncStorage quando o componente montar
