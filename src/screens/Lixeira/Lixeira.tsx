@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Alert, VirtualizedList } from 'react-native';
 import { useSenhasContext } from '../../hooks/useSenhasContext';
+import { useLixeiraContext } from '../../hooks/useLixeiraContext';
 import { StatusBar } from 'expo-status-bar';
 import * as Clipboard from 'expo-clipboard';
-import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 
-import { useLixeiraContext } from '../../hooks/useLixeiraContext';
-
-import { styles } from './PasswordsStyles';
+import { styles } from './LixeiraStyles';
 
 
 interface Senha {
@@ -15,33 +14,19 @@ interface Senha {
     senha: string;
 }
 
-export function Passwords() {
+export function Lixeira() {
 
     const { senhas, setSenhas } = useSenhasContext();
     const { lixeira, setLixeira } = useLixeiraContext();
     const [showPass, setShowPass] = useState<number | null>(null);
-
     var column = 1;
 
     const handleRemoverSenha = (senhaParaRemover: Senha) => {
-        // nova lista excluindo a senha selecionada
-        const novaListaSenhas = senhas.filter(senha => senha !== senhaParaRemover);
-        const novaListaLixeira = [...lixeira, senhaParaRemover];
+        const novaListaLixeira = lixeira.filter(senha => senha !== senhaParaRemover);
 
-        // atualiza o estado com a nova lista
-        setSenhas(novaListaSenhas);
-        setLixeira(novaListaLixeira);
+        setLixeira(novaListaLixeira)
     };
 
-    const handleCopySenha = (senhaParaCopiar: Senha) => {
-        Clipboard.setStringAsync(senhaParaCopiar.senha);
-        Alert.alert(
-            '',
-            'Senha copiada para área de transferência',
-            [{ text: 'Fechar', }
-            ],
-        );
-    };
 
     const hidden = (index: number) => {
         setShowPass((prevIndex) => (prevIndex === index ? null : index));
@@ -54,7 +39,7 @@ export function Passwords() {
     const handleShowOptionsAlert = (senhaParaRemover: Senha, item: Senha) => {
         Alert.alert(
             'Atenção',
-            `Deseja excluir a senha ${item.conta} ?`,
+            `Deseja excluir a senha ${item.conta} permanentemente?`,
             [
                 {
                     text: 'Excluir Senha',
@@ -67,6 +52,34 @@ export function Passwords() {
             ],
             { cancelable: true }
         );
+    };
+
+    const handleRecycle = (senhaParaRemover: Senha, item: Senha) => {
+        Alert.alert(
+            'Atenção',
+            `Deseja restaurar a senha ${item.conta} ?`,
+            [
+                {
+                    text: 'Restaurar Senha',
+                    onPress: () => handleRecycleSenha(senhaParaRemover),
+                },
+                {
+                    text: 'Cancelar',
+                    style: 'cancel',
+                },
+            ],
+            { cancelable: true }
+        );
+    };
+
+    const handleRecycleSenha = (senhaParaRemover: Senha) => {
+        // nova lista excluindo a senha selecionada
+        const novaListaLixeira = lixeira.filter(senha => senha !== senhaParaRemover);
+        const novaListaSenhas = [...senhas, senhaParaRemover];
+
+        // atualiza o estado com a nova lista
+        setSenhas(novaListaSenhas);
+        setLixeira(novaListaLixeira);
     };
 
     const renderItem = ({ item, index }: { item: Senha, index: number }) => (
@@ -91,21 +104,21 @@ export function Passwords() {
 
                     </TouchableOpacity>
                     <View
-                        onTouchStart={() => handleCopySenha(item)}
+                        onTouchStart={() => handleRecycle(item, item)}
                     >
-                        <Ionicons
+                        <MaterialCommunityIcons
                             size={30}
                             color={"#333333"}
-                            name="copy"
+                            name="recycle"
                         />
                     </View>
                     <View
                         onTouchStart={() => handleShowOptionsAlert(item, item)}
                     >
-                        <FontAwesome
+                        <MaterialCommunityIcons
                             size={30}
                             color={"#333"}
-                            name="trash-o"
+                            name="delete-forever"
                         />
                     </View>
                 </View>
@@ -121,18 +134,18 @@ export function Passwords() {
                 style='light'
                 translucent={true}
             />
-            <Text style={styles.textHeader}>Senhas Salvas</Text>
-            {senhas.length > 0 ? (
+            <Text style={styles.textHeader}>Lixeira</Text>
+            {lixeira.length > 0 ? (
                 <View style={styles.listContainer}>
                     <FlatList
-                        data={senhas}
+                        data={lixeira}
                         renderItem={renderItem}
                         keyExtractor={(item) => item.senha.toString()}
                         numColumns={column}
                     />
                 </View>
             ) : (
-                <Text style={styles.textoVazio}>Nenhuma senha salva</Text>
+                <Text style={styles.textoVazio}>Lixeira está vazia</Text>
             )}
         </View>
     );
