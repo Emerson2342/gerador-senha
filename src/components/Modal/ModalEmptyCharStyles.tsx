@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         backgroundColor: "#000",
         width: "85%",
         borderRadius: 5,
-        padding: 30,
+        padding: 10,
         borderWidth: 1,
         borderColor: "#e5bf3c"
     },
@@ -21,17 +21,8 @@ export const styles = StyleSheet.create({
     },
     text: {
         fontSize: 23,
-        padding: 10,
-        marginBottom: 15,
         fontWeight: "bold",
         color: "#fff",
         textAlign: "center"
-    },
-    textClose: {
-        padding: 10,
-        textAlign: "center",
-        fontSize: 20,
-        fontWeight: 'bold'
-
     }
 });

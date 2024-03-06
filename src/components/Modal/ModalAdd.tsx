@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, TouchableOpacity, Text, TextInput, Alert, Modal } from 'react-native';
-
+import { View, TouchableOpacity, Text, TextInput, Modal } from 'react-native';
 import { styles } from './ModalAddStyles';
 import { usePassContext } from '../../hooks/usePassContext';
 import { useSenhasContext } from '../../hooks/useSenhasContext';
-
+import { ModalContaEmBranco } from './ModalContaEmBranco';
+import { ModalContaExistente } from './ModalContaExistente';
 interface ModalAddProps {
     handleClose: () => void;
 }
@@ -21,33 +21,22 @@ export function ModalAdd({ handleClose }: ModalAddProps) {
     const { senhas, setSenhas } = useSenhasContext();
 
     const [nomeConta, setNomeConta] = useState('');
+    const [contaEmBrancoVisible, setContaEmBrancoVisible] = useState(false);
+    const [contaExistenteVisible, setContaExistenteVisible] = useState(false);
 
 
     const addSenha = (nomeConta: string) => {
         if (pass !== undefined && pass !== null) {
-            const senhaExistente = senhas.some((senha) => senha.conta === nomeConta);
+            const senhaExistente = senhas.some((senha) => senha.conta.trim() === nomeConta.trim());
 
             if (nomeConta === '') {
-                Alert.alert(
-                    'Atenção',
-                    'Conta não pode ficar em branco',
-                    [{ text: '', },
-                    { text: 'Ok', style: 'cancel' },
-                    ],
-                    { cancelable: true })
+                setContaEmBrancoVisible(true);
             } else if (senhaExistente) {
-                Alert.alert(
-                    'Atenção',
-                    'Já existe uma senha para essa conta!',
-                    [{ text: '', },
-                    { text: 'Ok', style: 'cancel' },
-                    ],
-                    { cancelable: true })
+                setContaExistenteVisible(true);
             }
-
             else {
                 const novaSenha: Senha = {
-                    conta: nomeConta,
+                    conta: nomeConta.trim(),
                     senha: pass.password,
                 };
 
@@ -78,19 +67,13 @@ export function ModalAdd({ handleClose }: ModalAddProps) {
                     value={nomeConta}
                     onChangeText={(text) => {
                         setNomeConta(text);
-
                     }}
 
                 />
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={() => {
-                            {
-
-                                addSenha(nomeConta);
-                            }
-                        }}
+                        onPress={() => addSenha(nomeConta)}
 
                     ><Text style={styles.textClose}>Salvar</Text></TouchableOpacity>
 
@@ -104,6 +87,24 @@ export function ModalAdd({ handleClose }: ModalAddProps) {
                     ><Text style={styles.textClose}>Voltar</Text></TouchableOpacity>
                 </View>
             </View>
+            <Modal
+                transparent={true}
+                visible={contaEmBrancoVisible}
+                animationType='fade'
+            >
+                <ModalContaEmBranco
+                    handleClose={() => setContaEmBrancoVisible(false)}
+                />
+            </Modal>
+            <Modal
+                transparent={true}
+                visible={contaExistenteVisible}
+                animationType='fade'
+            >
+                <ModalContaExistente
+                    handleClose={() => setContaExistenteVisible(false)}
+                />
+            </Modal>
 
         </View >
     );

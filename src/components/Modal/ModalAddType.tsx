@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, TouchableOpacity, Text, TextInput, Alert, Modal } from 'react-native';
+import { View, TouchableOpacity, Text, TextInput, Modal } from 'react-native';
 
 import { styles } from './ModalAddTypeStyles';
 import { usePassContext } from '../../hooks/usePassContext';
 import { useSenhasContext } from '../../hooks/useSenhasContext';
+import { ModalContaEmBranco } from './ModalContaEmBranco';
+import { ModalContaExistente } from './ModalContaExistente';
 
 interface ModalAddProps {
     handleClose: () => void;
@@ -22,29 +24,19 @@ export function ModalAddType({ handleClose }: ModalAddProps) {
 
     const [nomeConta, setNomeConta] = useState('');
     const [senhaDigitada, setSenhaDigitada] = useState('');
+    const [contaEmBrancoVisible, setContaEmBrancoVisible] = useState(false);
+    const [contaExistenteVisible, setContaExistenteVisible] = useState(false);
 
 
 
     const addSenha = (nomeConta: string) => {
         if (pass !== undefined && pass !== null) {
-            const senhaExistente = senhas.some((senha) => senha.conta === nomeConta);
+            const senhaExistente = senhas.some((senha) => senha.conta.trim() === nomeConta.trim());
 
             if (nomeConta === '') {
-                Alert.alert(
-                    'Atenção',
-                    'Conta não pode ficar em branco',
-                    [{ text: '', },
-                    { text: 'Ok', style: 'cancel' },
-                    ],
-                    { cancelable: true })
+                setContaEmBrancoVisible(true);
             } else if (senhaExistente) {
-                Alert.alert(
-                    'Atenção',
-                    'Já existe uma senha para essa conta!',
-                    [{ text: '', },
-                    { text: 'Ok', style: 'cancel' },
-                    ],
-                    { cancelable: true })
+                setContaExistenteVisible(true);
             }
 
             else {
@@ -111,6 +103,24 @@ export function ModalAddType({ handleClose }: ModalAddProps) {
                     ><Text style={styles.textClose}>Voltar</Text></TouchableOpacity>
                 </View>
             </View>
+            <Modal
+                transparent={true}
+                visible={contaEmBrancoVisible}
+                animationType='fade'
+            >
+                <ModalContaEmBranco
+                    handleClose={() => setContaEmBrancoVisible(false)}
+                />
+            </Modal>
+            <Modal
+                transparent={true}
+                visible={contaExistenteVisible}
+                animationType='fade'
+            >
+                <ModalContaExistente
+                    handleClose={() => setContaExistenteVisible(false)}
+                />
+            </Modal>
 
 
 

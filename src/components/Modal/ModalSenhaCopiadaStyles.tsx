@@ -9,10 +9,10 @@ export const styles = StyleSheet.create({
     },
     content: {
         backgroundColor: "#000",
-        width: "85%",
+        width: "97%",
         borderRadius: 5,
-        padding: 20,
-        borderWidth: 1,
+        padding: 10,
+        borderWidth: 2,
         borderColor: "#e5bf3c"
     },
     button: {
@@ -20,16 +20,9 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
     },
     text: {
-        fontSize: 23,
-        fontWeight: "bold",
-        color: "#fff",
-        textAlign: "center"
-    },
-    textClose: {
-        padding: 10,
-        textAlign: "center",
         fontSize: 20,
-        fontWeight: 'bold'
-
+        color: "#fff",
+        fontWeight: "bold",
+        textAlign: "center"
     }
 });

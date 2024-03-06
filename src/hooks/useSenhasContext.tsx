@@ -32,7 +32,6 @@ export const SenhasProvider: React.FC<SenhasProviderProps> = ({ children }) => {
 
     ]);
 
-    // Carregar os dados do AsyncStorage quando o componente montar
     useEffect(() => {
         const loadAsyncData = async () => {
             try {
@@ -48,7 +47,6 @@ export const SenhasProvider: React.FC<SenhasProviderProps> = ({ children }) => {
         loadAsyncData();
     }, []);
 
-    // Atualizar o AsyncStorage sempre que a lista for alterada
     useEffect(() => {
         const saveAsyncData = async () => {
             try {

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, TouchableOpacity, Text } from 'react-native';
 
-import { styles } from './ModalEmptyCharStyles';
+import { styles } from './ModalSenhaCopiadaStyles';
 
 interface ModalAddProps {
     handleClose: () => void;
 
 }
-export function ModalEmptyChar({ handleClose }: ModalAddProps) {
+export function ModalContaEmBranco({ handleClose }: ModalAddProps) {
     const [tempoDecorrido, setTempoDecorrido] = useState(0);
 
     useEffect(() => {
@@ -28,7 +28,6 @@ export function ModalEmptyChar({ handleClose }: ModalAddProps) {
         };
     }, [handleClose]);
 
-
     return (
         <View style={styles.container}>
             <StatusBar
@@ -38,7 +37,8 @@ export function ModalEmptyChar({ handleClose }: ModalAddProps) {
             />
             <View style={styles.content}>
 
-                <Text style={styles.text}>Favor, selecionar um tipo de caractere!</Text>
+                <Text style={styles.text}>Atenção!</Text>
+                <Text style={styles.text}>Favor adicionar a conta da senha!</Text>
 
             </View>
         </View>

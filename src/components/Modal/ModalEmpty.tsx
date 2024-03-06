@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, TouchableOpacity, Text } from 'react-native';
 
@@ -10,6 +10,25 @@ interface ModalAddProps {
 }
 export function ModalEmpty({ handleClose }: ModalAddProps) {
 
+    const [tempoDecorrido, setTempoDecorrido] = useState(0);
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            handleClose();
+        }, 2000);
+
+
+        const intervalId = setInterval(() => {
+            setTempoDecorrido((tempoAnterior) => tempoAnterior + 1);
+        }, 1000);
+
+
+        return () => {
+            clearTimeout(timeoutId);
+            clearInterval(intervalId);
+        };
+    }, [handleClose]);
+
     return (
         <View style={styles.container}>
             <StatusBar
@@ -20,13 +39,6 @@ export function ModalEmpty({ handleClose }: ModalAddProps) {
             <View style={styles.content}>
 
                 <Text style={styles.text}>Favor, gerar uma senha!</Text>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => handleClose()}
-                >
-                    <Text style={styles.textClose}>Voltar</Text>
-
-                </TouchableOpacity>
 
             </View>
         </View>
