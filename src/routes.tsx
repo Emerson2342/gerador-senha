@@ -4,9 +4,10 @@ import { Passwords } from './screens/Passwords/Passwords';
 import { Lixeira } from "./screens/Lixeira/Lixeira";
 import * as Animatable from 'react-native-animatable';
 
-import { EvilIcons, Feather, FontAwesome, Fontisto, Ionicons, MaterialCommunityIcons, Octicons } from '@expo/vector-icons'
+import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import { StatusBar } from "expo-status-bar";
 
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useState } from "react";
 import logo from '../assets/23.png'
 
@@ -60,8 +61,12 @@ export function Routes() {
             <Tab.Navigator
                 screenOptions={{
                     tabBarStyle: {
-                        backgroundColor: "black",
-                        height: 60
+                        backgroundColor: "#000",
+                        width: '90%',
+                        borderRadius: 7,
+                        alignSelf: "center",
+                        bottom: 15,
+                        borderTopWidth: 0
                     }
                 }}>
 
@@ -74,9 +79,9 @@ export function Routes() {
                         headerShown: false,
                         tabBarIcon: ({ focused }) => {
                             if (focused) {
-                                return <Ionicons size={35} color={"#e5bf3c"} name="home" />
+                                return <Ionicons size={25} color={"#e5bf3c"} name="home" />
                             }
-                            return <Ionicons size={35} color={"#e5bf3c"} name="home-outline" />
+                            return <Ionicons size={25} color={"#e5bf3c"} name="home-outline" />
                         }
                     }}
                 />
@@ -88,9 +93,9 @@ export function Routes() {
                         headerShown: false,
                         tabBarIcon: ({ focused }) => {
                             if (focused) {
-                                return <Ionicons size={35} color={"#e5bf3c"} name="lock-closed" />
+                                return <Ionicons size={25} color={"#e5bf3c"} name="lock-closed" />
                             }
-                            return <Ionicons size={35} color={"#e5bf3c"} name="lock-closed-outline" />
+                            return <Ionicons size={25} color={"#e5bf3c"} name="lock-closed-outline" />
                         }
                     }}
                 />
@@ -103,9 +108,9 @@ export function Routes() {
                         headerShown: false,
                         tabBarIcon: ({ focused }) => {
                             if (focused) {
-                                return <FontAwesome size={35} color={"#e5bf3c"} name="trash" />
+                                return <FontAwesome size={25} color={"#e5bf3c"} name="trash" />
                             }
-                            return <FontAwesome size={35} color={"#e5bf3c"} name="trash-o" />
+                            return <FontAwesome size={25} color={"#e5bf3c"} name="trash-o" />
                         }
                     }}
                 />
@@ -114,8 +119,11 @@ export function Routes() {
     }
     return (
         <View
-            style={{ flex: 1 }}
+            style={{ flex: 1, backgroundColor: "#333" }}
         >
+            <StatusBar
+                backgroundColor='#333'
+            />
             {preHome ? <PreHome /> : <Aplication />}
         </View>
     )

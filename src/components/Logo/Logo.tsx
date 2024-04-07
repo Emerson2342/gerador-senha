@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { styles } from './BatLogoStyles';
+import { styles } from './LogoStyles';
 import locker from '../Animated/locker.json';
 import LottieView from 'lottie-react-native';
 
-export function BatLogo() {
+export function Logo() {
     return (
         <View>
             <Text style={styles.title}>

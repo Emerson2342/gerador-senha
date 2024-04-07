@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Alert, Modal } from 'react-native';
 import { useSenhasContext } from '../../hooks/useSenhasContext';
 import { StatusBar } from 'expo-status-bar';
@@ -111,8 +111,8 @@ export function Passwords() {
     return (
         <View style={styles.container}>
             <StatusBar
+                backgroundColor='#333'
                 style='light'
-                translucent={true}
             />
             <Text style={styles.textHeader}>Senhas Salvas</Text>
             {senhas.length > 0 ? (

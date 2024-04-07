@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
         backgroundColor: "#333333",
         alignItems: "center",
         justifyContent: "center",
+        paddingTop: 30
+
 
     },
     logoContainer: {
@@ -15,8 +17,75 @@ export const styles = StyleSheet.create({
         alignSelf: "center",
     },
     inputContainer: {
-        width: "80%",
-        flexDirection: "column",
-        alignItems: "center"
+        width: "100%",
+        alignItems: "center",
+        marginTop: 50
+
+    },
+    passContainer: {
+        justifyContent: "center",
+        alignSelf: 'center',
+        backgroundColor: "#000",
+        width: 300,
+        height: 50,
+        borderRadius: 9
+    },
+
+    optionsContainer: {
+        paddingBottom: 15,
+        paddingTop: 15
+    },
+    optionItem: {
+        width: '50%',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    icon: {
+        textAlign: "right",
+        width: "20%",
+    },
+    optionsContent: {
+        flexDirection: 'row',
+        paddingTop: 5
+    },
+    textOptions: {
+        fontSize: 20,
+        color: "#e5bf3c",
+        textAlign: "left",
+        width: '80%'
+    },
+    buttonContainer: {
+        width: '100%',
+        top: 10
+    },
+    button: {
+        alignItems: "center",
+        width: "75%",
+        alignSelf: 'center',
+        backgroundColor: "#e5bf3c",
+        borderRadius: 5,
+        elevation: 5,
+        marginTop: 10
+    },
+    text: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: "#000",
+        padding: 5
+    },
+    textPassword: {
+        color: "#fff",
+        padding: 7,
+        fontSize: 20,
+        width: '90%',
+        borderRadius: 9,
+        alignSelf: 'center',
+        textAlign: 'center'
+    },
+    textChar: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        letterSpacing: 1.50,
+        color: "#e5bf3c",
     }
 });
