@@ -8,7 +8,7 @@ export function Logo() {
     return (
         <View>
             <Text style={styles.title}>
-                Gerador de Senhas
+                Gerenciador de Senhas
             </Text>
             <LottieView
                 loop={true}

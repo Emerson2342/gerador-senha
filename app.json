@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Gerador de Senha",
+    "name": "Gerenciador de Senhas",
     "slug": "bat-pass",
     "version": "1.0.0",
     "orientation": "portrait",
