@@ -10,6 +10,7 @@ import Slider from '@react-native-community/slider';
 import { Feather } from '@expo/vector-icons';
 import { ModalEmpty } from '../../components/Modal/ModalEmpty';
 import { ModalEmptyChar } from '../../components/Modal/ModalEmptyChar';
+import * as Animatable from 'react-native-animatable';
 
 export function Home() {
     const { pass, setPass } = usePassContext();
@@ -64,9 +65,7 @@ export function Home() {
 
             setPass((prevPass) => ({ ...prevPass, password: password }));
             setShowPass(true);
-
         }
-
     }
 
     function handleTypeButton() {
@@ -81,7 +80,6 @@ export function Home() {
     }
     return (
         <View style={styles.appContainer}>
-
             <View style={styles.logoContainer}>
                 <Logo />
             </View>
@@ -101,37 +99,44 @@ export function Home() {
                     </View>
 
                     <View style={styles.optionsContainer}>
-                        <View style={styles.optionsContent}>
-                            <TouchableOpacity
-                                onPress={() => lowerCase()}
-                                style={styles.optionItem}
-                            >
-                                <Feather style={styles.icon} size={20} color={"#e5bf3c"} name={lowerCaseChar ? 'check-square' : 'square'}
-                                /><Text style={styles.textOptions}>{' '}Minúsculas</Text>
+                        <Animatable.View
+                            animation={'shake'}
+                            iterationCount='infinite'
+                            duration={3500}
+                        >
+                            <View style={styles.optionsContent}>
 
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => upperCase()}
-                                style={styles.optionItem}
-                            ><Feather style={styles.icon} size={20} color={"#e5bf3c"} name={upperCaseChar ? 'check-square' : 'square'} /><Text style={styles.textOptions}>{' '}Maiúsculas</Text>
-                            </TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => lowerCase()}
+                                    style={styles.optionItem}
+                                ><Feather style={styles.icon} size={20} color={"#e5bf3c"} name={lowerCaseChar ? 'check-square' : 'square'}
+                                    /><Text style={styles.textOptions}>{' '}Minúsculas</Text>
 
-                        </View>
-                        <View style={styles.optionsContent}>
-                            <TouchableOpacity
-                                onPress={() => number()}
-                                style={styles.optionItem}
-                            >
-                                <Feather style={styles.icon} size={20} color={"#e5bf3c"} name={numberChar ? 'check-square' : 'square'} /><Text style={styles.textOptions}>{' '}Numéricos</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => especial()}
-                                style={styles.optionItem}
-                            >
-                                <Feather style={styles.icon} size={20} color={"#e5bf3c"} name={especialChar ? 'check-square' : 'square'}
-                                /><Text style={styles.textOptions}>{' '}Especiais</Text>
-                            </TouchableOpacity>
-                        </View>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity
+                                    onPress={() => upperCase()}
+                                    style={styles.optionItem}
+                                ><Feather style={styles.icon} size={20} color={"#e5bf3c"} name={upperCaseChar ? 'check-square' : 'square'} /><Text style={styles.textOptions}>{' '}Maiúsculas</Text>
+                                </TouchableOpacity>
+
+                            </View>
+                            <View style={styles.optionsContent}>
+                                <TouchableOpacity
+                                    onPress={() => number()}
+                                    style={styles.optionItem}
+                                >
+                                    <Feather style={styles.icon} size={20} color={"#e5bf3c"} name={numberChar ? 'check-square' : 'square'} /><Text style={styles.textOptions}>{' '}Numéricos</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => especial()}
+                                    style={styles.optionItem}
+                                >
+                                    <Feather style={styles.icon} size={20} color={"#e5bf3c"} name={especialChar ? 'check-square' : 'square'}
+                                    /><Text style={styles.textOptions}>{' '}Especiais</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </Animatable.View>
                     </View >
                 </View >
                 <Text style={styles.textChar}>{size} caracteres</Text>

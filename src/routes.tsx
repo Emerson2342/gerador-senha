@@ -3,15 +3,13 @@ import { Home } from './screens/Home/Home';
 import { Passwords } from './screens/Passwords/Passwords';
 import { Lixeira } from "./screens/Lixeira/Lixeira";
 import * as Animatable from 'react-native-animatable';
-
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import { StatusBar } from "expo-status-bar";
-
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useState } from "react";
 import logo from '../assets/23.png'
 
-const Tab = createBottomTabNavigator();
+const { Navigator, Screen } = createBottomTabNavigator();
 
 export function Routes() {
     const [preHome, setPreHome] = useState(true);
@@ -58,63 +56,68 @@ export function Routes() {
 
     function Aplication() {
         return (
-            <Tab.Navigator
-                screenOptions={{
-                    tabBarStyle: {
-                        backgroundColor: "#000",
-                        width: '90%',
-                        borderRadius: 7,
-                        alignSelf: "center",
-                        bottom: 15,
-                        borderTopWidth: 0
-                    }
-                }}>
-
-                <Tab.Screen
-                    name="principal"
-                    component={Home}
-                    options={{
-
-                        tabBarShowLabel: false,
-                        headerShown: false,
-                        tabBarIcon: ({ focused }) => {
-                            if (focused) {
-                                return <Ionicons size={25} color={"#e5bf3c"} name="home" />
-                            }
-                            return <Ionicons size={25} color={"#e5bf3c"} name="home-outline" />
+            <Animatable.View
+                style={{ flex: 1, }}
+                animation='zoomIn'
+            >
+                < Navigator
+                    screenOptions={{
+                        tabBarStyle: {
+                            backgroundColor: "#000",
+                            width: '90%',
+                            borderRadius: 7,
+                            alignSelf: "center",
+                            bottom: 15,
+                            borderTopWidth: 0
                         }
-                    }}
-                />
-                <Tab.Screen
-                    name="senhas"
-                    component={Passwords}
-                    options={{
-                        tabBarShowLabel: false,
-                        headerShown: false,
-                        tabBarIcon: ({ focused }) => {
-                            if (focused) {
-                                return <Ionicons size={25} color={"#e5bf3c"} name="lock-closed" />
-                            }
-                            return <Ionicons size={25} color={"#e5bf3c"} name="lock-closed-outline" />
-                        }
-                    }}
-                />
+                    }}>
 
-                <Tab.Screen
-                    name="lixeira"
-                    component={Lixeira}
-                    options={{
-                        tabBarShowLabel: false,
-                        headerShown: false,
-                        tabBarIcon: ({ focused }) => {
-                            if (focused) {
-                                return <FontAwesome size={25} color={"#e5bf3c"} name="trash" />
+                    <Screen
+                        name="principal"
+                        component={Home}
+                        options={{
+
+                            tabBarShowLabel: false,
+                            headerShown: false,
+                            tabBarIcon: ({ focused }) => {
+                                if (focused) {
+                                    return <Ionicons size={25} color={"#e5bf3c"} name="home" />
+                                }
+                                return <Ionicons size={25} color={"#e5bf3c"} name="home-outline" />
                             }
-                            return <FontAwesome size={25} color={"#e5bf3c"} name="trash-o" />
-                        }
-                    }}
-                />
-            </Tab.Navigator>
+                        }}
+                    />
+                    <Screen
+                        name="senhas"
+                        component={Passwords}
+                        options={{
+                            tabBarShowLabel: false,
+                            headerShown: false,
+                            tabBarIcon: ({ focused }) => {
+                                if (focused) {
+                                    return <Ionicons size={25} color={"#e5bf3c"} name="lock-closed" />
+                                }
+                                return <Ionicons size={25} color={"#e5bf3c"} name="lock-closed-outline" />
+                            }
+                        }}
+                    />
+
+                    <Screen
+                        name="lixeira"
+                        component={Lixeira}
+                        options={{
+                            tabBarShowLabel: false,
+                            headerShown: false,
+                            tabBarIcon: ({ focused }) => {
+                                if (focused) {
+                                    return <FontAwesome size={25} color={"#e5bf3c"} name="trash" />
+                                }
+                                return <FontAwesome size={25} color={"#e5bf3c"} name="trash-o" />
+                            }
+                        }}
+                    />
+                </Navigator>
+            </Animatable.View>
         )
     }
     return (

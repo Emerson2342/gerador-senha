@@ -71,20 +71,21 @@ export function ModalAdd({ handleClose }: ModalAddProps) {
 
                 />
                 <View style={styles.buttonContainer}>
+
+                    <TouchableOpacity
+                        style={[styles.button, { backgroundColor: "#000" }]}
+                        onPress={() => {
+                            handleClose();
+                            setPass({ password: '' });
+                        }}
+
+                    ><Text style={[styles.textClose, { color: "#fff" }]}>Voltar</Text></TouchableOpacity>
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => addSenha(nomeConta)}
 
                     ><Text style={styles.textClose}>Salvar</Text></TouchableOpacity>
 
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => {
-                            handleClose();
-                            setPass({ password: '' });
-                        }}
-
-                    ><Text style={styles.textClose}>Voltar</Text></TouchableOpacity>
                 </View>
             </View>
             <Modal

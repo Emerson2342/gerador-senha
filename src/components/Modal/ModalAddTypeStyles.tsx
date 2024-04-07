@@ -26,6 +26,8 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         top: 15,
         marginVertical: 5,
+        borderWidth: 1,
+        borderColor: "#e5bf3c"
     },
 
     input: {
@@ -41,7 +43,7 @@ export const styles = StyleSheet.create({
 
     },
     textClose: {
-        padding: 10,
+        padding: 5,
         textAlign: "center",
         fontSize: 20,
         fontWeight: 'bold',
