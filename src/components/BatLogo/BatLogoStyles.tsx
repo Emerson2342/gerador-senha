@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     },
     logo: {
         resizeMode: "contain",
-        height: 220,
+        height: 150,
+
     }
 });

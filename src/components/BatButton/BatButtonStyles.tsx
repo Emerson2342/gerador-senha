@@ -9,8 +9,6 @@ export const styles = StyleSheet.create({
         width: '50%',
         flexDirection: 'row',
         alignItems: 'center',
-
-
     },
     icon: {
         textAlign: "right",

@@ -8,9 +8,9 @@
     "userInterfaceStyle": "light",
     "displayName": "Gerador de Senha",
     "splash": {
-      "image": "./assets/batSplash.jpg",
+      "image": "./assets/splash.jpg",
       "resizeMode": "contain",
-      "backgroundColor": "#33333333"
+      "backgroundColor": "#333333"
     },
     "assetBundlePatterns": [
       "**/*"

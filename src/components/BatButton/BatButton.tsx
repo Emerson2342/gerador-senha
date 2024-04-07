@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, Modal } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { Feather } from '@expo/vector-icons'
-
-
 import { styles } from './BatButtonStyles';
 import { ModalAdd } from '../Modal/ModalAdd';
 import { ModalAddType } from '../Modal/ModalAddType';

@@ -1,20 +1,22 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
-
+import { View, Text } from 'react-native';
 import { styles } from './BatLogoStyles';
-import batLogo from '../../../assets/batLogo.png'
+import locker from '../Animated/locker.json';
+import LottieView from 'lottie-react-native';
 
 export function BatLogo() {
     return (
-        <>
+        <View>
             <Text style={styles.title}>
                 Gerador de Senhas
             </Text>
-            <Image
+            <LottieView
+                loop={true}
+                autoPlay={true}
+                duration={5000}
                 style={styles.logo}
-                source={batLogo}
+                source={locker}
             />
-
-        </>
+        </View>
     );
 }
