@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Modal } from 'react-native';
 
 import { styles } from './HomeStyle';
@@ -8,8 +8,6 @@ import { ModalAdd } from '../../components/Modal/ModalAdd';
 import { ModalAddType } from '../../components/Modal/ModalAddType';
 import Slider from '@react-native-community/slider';
 import { Feather } from '@expo/vector-icons';
-import { ModalEmpty } from '../../components/Modal/ModalEmpty';
-import { ModalEmptyChar } from '../../components/Modal/ModalEmptyChar';
 import * as Animatable from 'react-native-animatable';
 
 export function Home() {
@@ -18,13 +16,14 @@ export function Home() {
     const [showPass, setShowPass] = useState(false);
     const [modalAddVisible, setModalAddVisible] = useState(false);
     const [modalAddTypeVisible, setModalAddTypeVisible] = useState(false);
-    const [modalEmptyVisible, setModalEmptyVisible] = useState(false);
-    const [modalEmptyCharVisible, setModalEmptyCharVisible] = useState(false);
 
     const [lowerCaseChar, setLowerCaseChar] = useState(false);
     const [upperCaseChar, setUpperCaseChar] = useState(false);
     const [numberChar, setNumberChar] = useState(false);
     const [especialChar, setEspecialChar] = useState(false);
+
+    const [selecionarCaractere, setSelecionarCaractere] = useState(false);
+    const [gerarSenha, setGerarSenha] = useState(false);
 
     const lowerCase = () => lowerCaseChar ? setLowerCaseChar(false) : setLowerCaseChar(true);
     const upperCase = () => upperCaseChar ? setUpperCaseChar(false) : setUpperCaseChar(true);
@@ -37,12 +36,33 @@ export function Home() {
     const especialSet = '!@#$%&?!@#$%&?';
 
 
+    useEffect(() => {
+        let timeoutChar: any;
+        let timeoutGenerate: any;
+
+        if (selecionarCaractere) {
+            timeoutChar = setTimeout(() => {
+                setSelecionarCaractere(false);
+            }, 3000);
+        }
+
+        if (gerarSenha) {
+            timeoutGenerate = setTimeout(() => {
+                setGerarSenha(false);
+            }, 3000);
+        }
+        return () => {
+            clearTimeout(timeoutChar);
+            clearTimeout(timeoutGenerate);
+        };
+    }, [selecionarCaractere, gerarSenha]);
+
     function handleGenerateButton() {
 
         if (!(lowerCaseChar || upperCaseChar || numberChar || especialChar)) {
-            setModalEmptyCharVisible(true);
-        }
-        else {
+            setSelecionarCaractere(true)
+
+        } else {
             var passChar = ""
 
             if (lowerCaseChar) {
@@ -75,8 +95,7 @@ export function Home() {
 
 
     function handleSavePass() {
-        pass.password !== '' ? setModalAddVisible(true) : setModalEmptyVisible(true);
-
+        pass.password !== '' ? setModalAddVisible(true) : setGerarSenha(true);
     }
     return (
         <View style={styles.appContainer}>
@@ -98,13 +117,21 @@ export function Home() {
 
                     </View>
 
-                    <View style={styles.optionsContainer}>
+                    <Animatable.View
+                        animation={selecionarCaractere ? 'shake' : ''}
+                        iterationCount={3}
+                    >
+                        <View>
+                            <Text
+                                style={[styles.text, { color: "#e5bf3c" }]}
+                            >Selecione o tipo de caractere</Text>
+                        </View>
                         <View style={styles.optionsContent}>
 
                             <TouchableOpacity
                                 onPress={() => lowerCase()}
                                 style={styles.optionItem}
-                            ><Feather style={styles.icon} size={20} color={"#e5bf3c"} name={lowerCaseChar ? 'check-square' : 'square'}
+                            ><Feather style={styles.icon} size={20} color={"#fff"} name={lowerCaseChar ? 'check-square' : 'square'}
                                 /><Text style={styles.textOptions}>{' '}Minúsculas</Text>
 
                             </TouchableOpacity>
@@ -112,7 +139,7 @@ export function Home() {
                             <TouchableOpacity
                                 onPress={() => upperCase()}
                                 style={styles.optionItem}
-                            ><Feather style={styles.icon} size={20} color={"#e5bf3c"} name={upperCaseChar ? 'check-square' : 'square'} /><Text style={styles.textOptions}>{' '}Maiúsculas</Text>
+                            ><Feather style={styles.icon} size={20} color={"#fff"} name={upperCaseChar ? 'check-square' : 'square'} /><Text style={styles.textOptions}>{' '}Maiúsculas</Text>
                             </TouchableOpacity>
 
                         </View>
@@ -121,18 +148,18 @@ export function Home() {
                                 onPress={() => number()}
                                 style={styles.optionItem}
                             >
-                                <Feather style={styles.icon} size={20} color={"#e5bf3c"} name={numberChar ? 'check-square' : 'square'} /><Text style={styles.textOptions}>{' '}Numéricos</Text>
+                                <Feather style={styles.icon} size={20} color={"#fff"} name={numberChar ? 'check-square' : 'square'} /><Text style={styles.textOptions}>{' '}Numéricos</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => especial()}
                                 style={styles.optionItem}
                             >
-                                <Feather style={styles.icon} size={20} color={"#e5bf3c"} name={especialChar ? 'check-square' : 'square'}
+                                <Feather style={styles.icon} size={20} color={"#fff"} name={especialChar ? 'check-square' : 'square'}
                                 /><Text style={styles.textOptions}>{' '}Especiais</Text>
                             </TouchableOpacity>
                         </View>
 
-                    </View >
+                    </Animatable.View >
                 </View >
                 <Text style={styles.textChar}>{size} caracteres</Text>
                 <Slider
@@ -151,12 +178,18 @@ export function Home() {
                 <View
                     style={styles.buttonContainer}
                 >
-                    <TouchableOpacity
-                        onPress={() => handleGenerateButton()}
-                        style={styles.button}
+                    <Animatable.View
+                        animation={gerarSenha ? 'shake' : ''}
+                        iterationCount={3}
                     >
-                        <Text style={styles.text}>Gerar Senha</Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => handleGenerateButton()}
+                            style={styles.button}
+                        >
+                            <Text style={styles.text}>Gerar Senha</Text>
+                        </TouchableOpacity>
+                    </Animatable.View>
+
 
                     <TouchableOpacity
                         onPress={() => handleSavePass()}
@@ -186,16 +219,6 @@ export function Home() {
                     />
                 </Modal>
 
-
-                <Modal
-                    visible={modalEmptyVisible}
-                    transparent={true}
-                    animationType='fade'
-                >
-                    <ModalEmpty
-                        handleClose={() => setModalEmptyVisible(false)}
-                    />
-                </Modal>
                 <Modal
                     visible={modalAddTypeVisible}
                     transparent={true}
@@ -205,16 +228,6 @@ export function Home() {
                         handleClose={() => setModalAddTypeVisible(false)}
                     />
                 </Modal>
-                <Modal
-                    visible={modalEmptyCharVisible}
-                    transparent={true}
-                    animationType='fade'
-                >
-                    <ModalEmptyChar
-                        handleClose={() => setModalEmptyCharVisible(false)}
-                    />
-                </Modal>
-
             </View>
         </View >
     );

@@ -30,11 +30,6 @@ export const styles = StyleSheet.create({
         height: 50,
         borderRadius: 9
     },
-
-    optionsContainer: {
-        paddingBottom: 15,
-        paddingTop: 15
-    },
     optionItem: {
         width: '50%',
         flexDirection: 'row',
@@ -50,7 +45,7 @@ export const styles = StyleSheet.create({
     },
     textOptions: {
         fontSize: 20,
-        color: "#e5bf3c",
+        color: "#fff",
         textAlign: "left",
         width: '80%'
     },
@@ -71,7 +66,8 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         color: "#000",
-        padding: 5
+        padding: 5,
+        textAlign: 'center'
     },
     textPassword: {
         color: "#fff",
