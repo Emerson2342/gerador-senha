@@ -1,14 +1,13 @@
 {
   "expo": {
     "name": "Gerenciador de Senhas",
-    "slug": "bat-pass",
+    "slug": "gerenciador",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/iconAndroid.png",
     "userInterfaceStyle": "light",
-    "displayName": "Gerador de Senha",
-    "splash": {
-      "image": "./assets/splash.jpg",
+       "splash": {
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#333333"
     },
@@ -26,7 +25,7 @@
       "package": "com.missinhoo.batpass"
     },
     "web": {
-      "favicon": "./assets/batIcone.jpg"
+      "favicon": "./assets/iconAndroid.png"
     },
     "extra": {
       "eas": {
