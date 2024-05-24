@@ -1,3 +1,4 @@
+![Demonstração](https://github.com/Emerson2342/gerador-senha/blob/main/Imagens/gif.gif)
 ![Apresentação](https://github.com/Emerson2342/gerador-senha/blob/main/Imagens/PreHome.jpeg)
 ![Página principal](https://github.com/Emerson2342/gerador-senha/blob/main/Imagens/PaginaPrincipal.jpeg) ![Senha Salva](https://github.com/Emerson2342/gerador-senha/blob/main/Imagens/SenhaSalva.jpeg)
 ![Digitar Senha](https://github.com/Emerson2342/gerador-senha/blob/main/Imagens/DigitarSenha.jpeg) ![Senhas Salvas](https://github.com/Emerson2342/gerador-senha/blob/main/Imagens/Senhas.jpeg)
