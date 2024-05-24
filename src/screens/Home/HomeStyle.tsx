@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+
     logoContainer: {
         flexDirection: "column",
         borderColor: "#e5bf3c",
@@ -47,7 +48,7 @@ export const styles = StyleSheet.create({
     },
     buttonContainer: {
         width: '100%',
-        top: 10
+
     },
     button: {
         alignItems: "center",

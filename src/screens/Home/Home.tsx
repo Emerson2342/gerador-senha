@@ -10,9 +10,12 @@ import Slider from '@react-native-community/slider';
 import { Feather } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
 import { MotiView } from 'moti';
+import { useFocusContext } from '../../hooks/useFocusContext';
+import { useFocusEffect } from '@react-navigation/native';
 
 export function Home() {
     const { pass, setPass } = usePassContext();
+    const { isHomeFocused, setFocus, } = useFocusContext();
     const [size, setSize] = useState(5);
     const [showPass, setShowPass] = useState(false);
     const [modalAddVisible, setModalAddVisible] = useState(false);
@@ -36,6 +39,14 @@ export function Home() {
     const numberSet = '01234567890123456789';
     const especialSet = '!@#$%&?!@#$%&?';
 
+    useFocusEffect(
+        React.useCallback(() => {
+            setFocus('home');
+        }, [setFocus])
+    );
+
+    console.log("Home:" + isHomeFocused);
+    console.log("*************");
 
     useEffect(() => {
         let timeoutChar: any;
@@ -99,12 +110,15 @@ export function Home() {
         pass.password !== '' ? setModalAddVisible(true) : setGerarSenha(true);
     }
     return (
+
+
         <MotiView
             style={styles.appContainer}
-            from={{ opacity: 0, translateX: -300 }}
-            animate={{ opacity: 1, translateX: 0 }}
-            transition={{ type: 'timing', duration: 700 }}
+            from={{ opacity: 0, }}
+            animate={{ opacity: isHomeFocused ? 1 : 0, translateY: 0 }}
+            transition={{ duration: 1000 }}
         >
+
             <View style={styles.logoContainer}>
                 <Logo />
             </View>
@@ -236,5 +250,6 @@ export function Home() {
                 </Modal>
             </View>
         </MotiView >
+
     );
 }

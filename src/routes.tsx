@@ -4,15 +4,16 @@ import { Passwords } from './screens/Passwords/Passwords';
 import { Lixeira } from "./screens/Lixeira/Lixeira";
 import * as Animatable from 'react-native-animatable';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
-import { StatusBar } from "expo-status-bar";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useState } from "react";
 import logo from '../assets/23.png'
+
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
 export function Routes() {
     const [preHome, setPreHome] = useState(true);
+
 
     function PreHome() {
         return (
@@ -57,17 +58,15 @@ export function Routes() {
     function Aplication() {
         return (
             <View
-                style={{ flex: 1, backgroundColor: "#333333" }}
+                style={{ flex: 1, }}
             >
                 < Navigator
                     screenOptions={{
                         tabBarStyle: {
                             backgroundColor: "#000",
-                            width: '90%',
-                            borderRadius: 7,
+                            width: '100%',
                             alignSelf: "center",
-                            bottom: 15,
-                            borderTopWidth: 0
+
                         }
                     }}>
 
@@ -84,6 +83,7 @@ export function Routes() {
                                 return <Ionicons size={25} color={"#e5bf3c"} name="home-outline" />
                             }
                         }}
+
                     />
                     <Screen
                         name="senhas"
@@ -123,7 +123,6 @@ export function Routes() {
             style={{ flex: 1 }}
         >
             {preHome ? <PreHome /> : <Aplication />}
-
         </View>
     )
 
@@ -141,11 +140,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 30,
+        paddingTop: 20,
     },
     desc: {
         color: "#fff",
         fontSize: 15,
-        padding: 10,
+        padding: 20,
         textAlign: 'center',
         fontStyle: 'italic'
     },
@@ -154,14 +154,14 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         backgroundColor: "#000",
         width: "100%",
-        borderTopLeftRadius: 50,
-        borderTopRightRadius: 50,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
     },
     button: {
         backgroundColor: "#333",
         width: '70%',
         alignSelf: "center",
-        borderRadius: 20
+        borderRadius: 10
     },
     buttonText: {
         color: "#e5bf3c",

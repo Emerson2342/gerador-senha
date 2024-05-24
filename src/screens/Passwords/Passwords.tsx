@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Alert, Modal } from 'react-native';
 import { useSenhasContext } from '../../hooks/useSenhasContext';
 import { StatusBar } from 'expo-status-bar';
@@ -8,6 +8,8 @@ import { ModalSenhaCopiada } from '../../components/Modal/ModalSenhaCopiada';
 import { useLixeiraContext } from '../../hooks/useLixeiraContext';
 import { styles } from './PasswordsStyles';
 import { MotiView } from 'moti';
+import { useFocusContext } from '../../hooks/useFocusContext';
+import { useFocusEffect } from '@react-navigation/native';
 
 interface Senha {
     conta: string;
@@ -18,12 +20,22 @@ export function Passwords() {
 
     const { senhas, setSenhas } = useSenhasContext();
     const { lixeira, setLixeira } = useLixeiraContext();
+    const { isPasswordsFocused, setFocus, } = useFocusContext();
     const [showPass, setShowPass] = useState<number | null>(null);
     const [senhaCopiadaVisible, setSenhaCopiadaVisible] = useState(false);
 
     const senhasOrdenadas = [...senhas].sort((a, b) => a.conta.localeCompare(b.conta));
 
     var column = 1;
+
+    useFocusEffect(
+        React.useCallback(() => {
+            setFocus('senhas');
+        }, [setFocus])
+    );
+
+    console.log("Senhas: " + isPasswordsFocused);
+    console.log("*************");
 
     const handleRemoverSenha = (senhaParaRemover: Senha) => {
         const novaListaSenhas = senhas.filter(senha => senha !== senhaParaRemover);
@@ -112,7 +124,11 @@ export function Passwords() {
 
 
     return (
-        <View style={styles.container}>
+        <MotiView style={styles.container}
+            from={{ opacity: 0 }}
+            animate={{ opacity: isPasswordsFocused ? 1 : 0, translateY: 0 }}
+            transition={{ duration: 1000 }}
+        >
             <StatusBar
                 backgroundColor='#333'
                 style='light'
@@ -139,6 +155,6 @@ export function Passwords() {
                     handleClose={() => setSenhaCopiadaVisible(false)}
                 />
             </Modal>
-        </View>
+        </MotiView>
     );
 } 
