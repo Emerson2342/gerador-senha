@@ -27,7 +27,7 @@ export function ModalAdd({ handleClose }: ModalAddProps) {
 
     const addSenha = (nomeConta: string) => {
         if (pass !== undefined && pass !== null) {
-            const senhaExistente = senhas.some((senha) => senha.conta.trim() === nomeConta.trim());
+            const senhaExistente = senhas.some((senha) => senha.conta.trim().toLocaleLowerCase() === nomeConta.trim().toLocaleLowerCase());
 
             if (nomeConta === '') {
                 setContaEmBrancoVisible(true);
