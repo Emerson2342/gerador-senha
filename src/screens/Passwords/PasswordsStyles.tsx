@@ -29,22 +29,20 @@ export const styles = StyleSheet.create({
     },
     listContainer: {
         width: '100%',
-        height: 500
+        height: '90%'
     },
     titleContainer: {
         flexDirection: "row",
     },
     textList: {
         fontSize: 17,
-        width: "100%",
-        textAlign: "left",
         fontWeight: "bold",
         color: "#fff",
         padding: 3
     },
     senhaContainer: {
         flexDirection: 'row',
-        justifyContent: "space-between"
+        justifyContent: "space-between",
     },
     textoVazio: {
         top: 150,

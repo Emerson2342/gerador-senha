@@ -9,6 +9,7 @@ import { ModalAddType } from '../../components/Modal/ModalAddType';
 import Slider from '@react-native-community/slider';
 import { Feather } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
+import { MotiView } from 'moti';
 
 export function Home() {
     const { pass, setPass } = usePassContext();
@@ -98,7 +99,12 @@ export function Home() {
         pass.password !== '' ? setModalAddVisible(true) : setGerarSenha(true);
     }
     return (
-        <View style={styles.appContainer}>
+        <MotiView
+            style={styles.appContainer}
+            from={{ opacity: 0, translateX: -300 }}
+            animate={{ opacity: 1, translateX: 0 }}
+            transition={{ type: 'timing', duration: 700 }}
+        >
             <View style={styles.logoContainer}>
                 <Logo />
             </View>
@@ -229,6 +235,6 @@ export function Home() {
                     />
                 </Modal>
             </View>
-        </View >
+        </MotiView >
     );
 }

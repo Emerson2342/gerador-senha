@@ -6,9 +6,6 @@ export const styles = StyleSheet.create({
         backgroundColor: "#333333",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: 30
-
-
     },
     logoContainer: {
         flexDirection: "column",
@@ -19,7 +16,6 @@ export const styles = StyleSheet.create({
     inputContainer: {
         width: "100%",
         alignItems: "center",
-        marginTop: 50
 
     },
     passContainer: {
@@ -28,7 +24,7 @@ export const styles = StyleSheet.create({
         backgroundColor: "#000",
         width: 300,
         height: 50,
-        borderRadius: 9
+        borderRadius: 7
     },
     optionItem: {
         width: '50%',

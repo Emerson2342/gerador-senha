@@ -7,6 +7,7 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { ModalSenhaCopiada } from '../../components/Modal/ModalSenhaCopiada';
 import { useLixeiraContext } from '../../hooks/useLixeiraContext';
 import { styles } from './PasswordsStyles';
+import { MotiView } from 'moti';
 
 interface Senha {
     conta: string;
@@ -64,14 +65,16 @@ export function Passwords() {
     };
 
     const renderItem = ({ item, index }: { item: Senha, index: number }) => (
-        <View style={styles.lista}>
-            <View >
-                <Text style={styles.textList}>Conta: {item.conta}</Text>
+        <View
+            style={styles.lista}
+        >
+            <View style={{ width: "90%", flexDirection: 'row' }}>
+                <Text style={styles.textList}>Conta: </Text><Text style={[styles.textList, { color: "#e5bf3c" }]}>{item.conta}</Text>
             </View>
             <View style={styles.senhaContainer}>
-                <View style={{ width: '65%' }}>
-                    {isPasswordVisible(index) ? <Text style={styles.textList}>Senha: {item.senha}</Text>
-                        : <Text style={styles.textList}>Senha: ***************</Text>}
+                <View style={{ width: '65%', flexDirection: "row" }}>
+                    <Text style={styles.textList}>Senha: </Text>{isPasswordVisible(index) ? <Text style={[styles.textList, { color: "#e5bf3c" }]}>{item.senha}</Text>
+                        : <Text style={[styles.textList]}>***************</Text>}
                 </View>
                 <View style={styles.iconContainer}>
                     <TouchableOpacity

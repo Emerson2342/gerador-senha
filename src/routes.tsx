@@ -56,9 +56,8 @@ export function Routes() {
 
     function Aplication() {
         return (
-            <Animatable.View
-                style={{ flex: 1, }}
-                animation='zoomIn'
+            <View
+                style={{ flex: 1, backgroundColor: "#333333" }}
             >
                 < Navigator
                     screenOptions={{
@@ -76,7 +75,6 @@ export function Routes() {
                         name="principal"
                         component={Home}
                         options={{
-
                             tabBarShowLabel: false,
                             headerShown: false,
                             tabBarIcon: ({ focused }) => {
@@ -117,17 +115,15 @@ export function Routes() {
                         }}
                     />
                 </Navigator>
-            </Animatable.View>
+            </View>
         )
     }
     return (
         <View
-            style={{ flex: 1, backgroundColor: "#333" }}
+            style={{ flex: 1 }}
         >
-            <StatusBar
-                backgroundColor='#333'
-            />
             {preHome ? <PreHome /> : <Aplication />}
+
         </View>
     )
 
