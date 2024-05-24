@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Gerenciador de Senhas",
-    "slug": "gerenciador",
+    "slug": "bat-pass",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/iconAndroid.png",
