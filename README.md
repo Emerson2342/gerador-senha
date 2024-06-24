@@ -30,6 +30,7 @@ Um aplicativo mobile para gerenciar suas senhas de um modo fácil e seguro.
 
 1. Faça o download do APK mais recente do [Aplicativo](https://github.com/Emerson2342/gerador-senha/releases/).
 2. Instale o APK no seu dispositivo Android.
+3. Sendo uma aplicação fora da play store, vai ser necessário permitir instalar aplicações de fontes não confiáveis.
 
 ### iOS
 
@@ -53,16 +54,11 @@ Atualmente não suportado.
 ![Senha Copiada](Imagens/SenhaCopiada.jpg) | ![Lixeira](Imagens/Lixeira.jpeg)
 |:---:|:---:|
 
-#Informações
+  ## Licença
+[![License](https://img.shields.io/badge/License-Custom-blue.svg)](LICENSE)
 
-Aplicação feita em REACT NATIVE com a finalidade de criar um aplicativo para gerenciar senhas, pode adicionar manualmente ou gerar com a quantidade de carateres desejado, com a opção de escolher quais tipos de caracteres usar para gerar a senha
-e o tamanho da mesma.
-Os dados ficam salvos no celular mesmo após fechando a aplicação.
+-**Suporte**
+    Para suporte ou feedback, entre em contato via WhatsApp: +55 (61) 99835-4398 (https://wa.me/5561998354398) ou pelo email: lyncoln_erc@hotmail.com
 
-#Instalação
-
-Aplicativo feito para usar no android. Sendo uma aplicação fora da play store, vai ser necessário permitir instalar aplicações de fontes não confiáveis.
-
-#Suporte
-
-Para suporte ou feedback, entre em contato via WhatsApp: +55 (61) 99835-4398 (https://wa.me/5561998354398) ou pelo email: lyncoln_erc@hotmail.com
+---
+2024 | Desenvolvido por Emerson Ribeiro
