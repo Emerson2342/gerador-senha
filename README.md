@@ -1,3 +1,4 @@
+
 # 📱 Gerenciador de Senhas
 
 Um aplicativo mobile para gerenciar suas senhas de um modo fácil e seguro.
@@ -18,9 +19,10 @@ Um aplicativo mobile para gerenciar suas senhas de um modo fácil e seguro.
   - Caso tenha apagado a senha sem querer, ela vai para uma LIXEIRA antes de ser completamente apagada.
 
 ## ⚙️ Tecnologias Utilizadas:
-- ⚛️ React Native;
-- ⚛️ Expo;
-- 🚀 TypeScript;
+    - ⚛️ React Native;
+    - ⚛️ Expo;
+    - 🚀 TypeScript;
+
 
 ## Instalação
 
@@ -39,44 +41,28 @@ Atualmente não suportado.
   - Para gerar uma senha, defina o tamanho dela e selecione dentre as 4 opções o tipo de senha desejado.
   - Caso queira salvar uma senha já existente, pode ir na opção DIGITE A SENHA.
 
-<div style="display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; padding: 5px;">
-        <img src="Imagens/gif.gif" alt="Demonstração" style="width: 100%;"/>
-    </div>
-    <div style="flex: 1; padding: 5px;">
-        <img src="Imagens/PreHome.jpeg" alt="Apresentação" style="width: 100%;"/>
-    </div>
-</div>
-<div style="display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; padding: 5px;">
-        <img src="Imagens/PaginaPrincipal.jpeg" alt="Página principal" style="width: 100%;"/>
-    </div>
-    <div style="flex: 1; padding: 5px;">
-        <img src="Imagens/SenhaSalva.jpeg" alt="Senha Salva" style="width: 100%;"/>
-    </div>
-</div>
-<div style="display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; padding: 5px;">
-        <img src="Imagens/DigitarSenha.jpeg" alt="Digitar Senha" style="width: 100%;"/>
-    </div>
-    <div style="flex: 1; padding: 5px;">
-        <img src="Imagens/Senhas.jpeg" alt="Senhas Salvas" style="width: 100%;"/>
-    </div>
-</div>
-<div style="display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; padding: 5px;">
-        <img src="Imagens/SenhaCopiada.jpg" alt="Senha Copiada" style="width: 100%;"/>
-    </div>
-    <div style="flex: 1; padding: 5px;">
-        <img src="Imagens/Lixeira.jpeg" alt="Lixeira" style="width: 100%;"/>
-    </div>
-</div>
+![Demonstração](Imagens/gif.gif) | ![Apresentação](Imagens/PreHome.jpeg)
+|:---:|:---:|
 
-## Licença
-[![License](https://img.shields.io/badge/License-Custom-blue.svg)](LICENSE)
+![Página principal](Imagens/PaginaPrincipal.jpeg) | ![Senha Salva](Imagens/SenhaSalva.jpeg)
+|:---:|:---:|
 
--**Suporte**
+![Digitar Senha](Imagens/DigitarSenha.jpeg) | ![Senhas Salvas](Imagens/Senhas.jpeg)
+|:---:|:---:|
+
+![Senha Copiada](Imagens/SenhaCopiada.jpg) | ![Lixeira](Imagens/Lixeira.jpeg)
+|:---:|:---:|
+
+#Informações
+
+Aplicação feita em REACT NATIVE com a finalidade de criar um aplicativo para gerenciar senhas, pode adicionar manualmente ou gerar com a quantidade de carateres desejado, com a opção de escolher quais tipos de caracteres usar para gerar a senha
+e o tamanho da mesma.
+Os dados ficam salvos no celular mesmo após fechando a aplicação.
+
+#Instalação
+
+Aplicativo feito para usar no android. Sendo uma aplicação fora da play store, vai ser necessário permitir instalar aplicações de fontes não confiáveis.
+
+#Suporte
+
 Para suporte ou feedback, entre em contato via WhatsApp: +55 (61) 99835-4398 (https://wa.me/5561998354398) ou pelo email: lyncoln_erc@hotmail.com
-
----
-2024 | Desenvolvido por Emerson Ribeiro
